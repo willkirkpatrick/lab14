@@ -19,6 +19,13 @@ controllers.controller('blogPostsController', ['$scope', '$location', 'PostFacto
         console.log("inside newPost function");
         $location.path("/newpost");
     }
+    
+    $scope.readIt = function() {
+        console.log("inside read function");
+        $scope.idNum = this.id;
+        console.log($scope.idNum);
+        $location.path("/readIt");
+    }
     $scope.loaded();
 }]);
 
@@ -28,6 +35,12 @@ controllers.controller("newPostController", ["$scope", "$location", 'PostFactory
         $scope.newEntry = {title: $scope.titleLine, author: $scope.writer, blog: $scope.weblog};
         console.log($scope.newEntry);
         PostFactory.save($scope.newEntry);
-        $location.path("/archive");
+        $location.path("/");
+    }
+}]);
+
+controllers.controller("singleViewController", ["$scope", "$location", "PostFactory", function($scope, $location, PostFactory) {
+    $scope.return = function() {
+        $location.path("/");
     }
 }]);

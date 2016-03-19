@@ -1,12 +1,9 @@
 
 <div ng-controller="blogPostsController">
-    <h3 id="archive-banner">Archive of Wisdom I Have Shared in The Past</h3>
+    <h3 id="archive-banner">Archive of Wisdom</h3>
     <button id="newPostButton" ng-click="newPost()">Create New Post</button>
     <div class="oldPosts" ng-repeat="message in oldMessages">
-       <p><button ng-click="readIt">Read</button> Title: {{message.title}}, Author: {{message.author}}, Date: {{message.createdAt}}, ID: {{message.id}}
+       <p><button id="message.id" ng-click="readIt()" ng->Read</button> Title: {{message.title}}, Author: {{message.author}}, Date: {{message.createdAt}}, ID: {{message.id}}
        </p>    
-        
-        
-        
     </div>
 </div>
