@@ -2,30 +2,30 @@
 
 var controllers = angular.module('myBlogApp');
 
-controllers.controller('blogPostsController', ['$scope', '$location', 'PostFactory', function($scope, $location, PostFactory) {
-    console.log('loading controller');
+controllers.controller('blogPostsController', ['$scope', '$location', 'PostFactory', "$rootScope", function($scope, $location, PostFactory, $rootScope) {
     $scope.loaded = function() {
         $scope.oldMessages = PostFactory.query().$promise.then(function(data) {
             $scope.oldMessages = data;
-        });    
-        console.log('loaded controller');    
+        });      
     }
-    console.log('midway through loading');
     $scope.newPost = function() {
-        // $scope.oldMessages = PostFactory.query().$promise.then(function(data) {
-        //     $scope.oldMessages = data;
-        // });
-        console.log($scope.oldMessages);
-        console.log("inside newPost function");
         $location.path("/newpost");
     }
     
-    $scope.readIt = function() {
+    $scope.readIt = function(id) {
         console.log("inside read function");
-        $scope.idNum = this.id;
-        console.log($scope.idNum);
+        console.log(id);
         $location.path("/readIt");
+        $scope.singlePost = PostFactory.get({id}).$promise.then(function(data) {
+            $rootScope.singleBlog = data;
+            console.log($rootScope.singleBlog);
+           
+        });
     }
+     $scope.return = function() {
+        $location.path("/");
+     }
+      
     $scope.loaded();
 }]);
 
@@ -39,8 +39,7 @@ controllers.controller("newPostController", ["$scope", "$location", 'PostFactory
     }
 }]);
 
-controllers.controller("singleViewController", ["$scope", "$location", "PostFactory", function($scope, $location, PostFactory) {
-    $scope.return = function() {
-        $location.path("/");
-    }
-}]);
+// controllers.controller("singleViewController", ["$scope", "$location", "PostFactory", function($scope, $location, PostFactory) {
+    
+//     }
+// }]);

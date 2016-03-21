@@ -15,7 +15,7 @@ app.config(["$routeProvider", function($routeProvider) {
     })
     .when("/readIt", {
         templateUrl: "views/singlepost.html",
-        controller: "singleViewController"
+        controller: "blogPostsController"
     })
     .otherwise({
         redirectTo: "/"

@@ -67,3 +67,13 @@
             text-align:left;
             
 }
+
+#display {
+            width:90%;
+            text-align:left;
+}
+
+#titleText {
+            display:inline-block;
+            width:75%;
+}

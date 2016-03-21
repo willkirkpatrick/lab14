@@ -1,6 +1,12 @@
 <h1>Read Me!</h1>
-<div id="singleview" ng-controller="singleViewController">
+<div id="singleview" ng-controller="blogPostsController">
     <div id="display">
+            <h4>Title: {{singleBlog.title}} </h4>
+            <h4>Author: {{singleBlog.author}} </h4>
+            <h4>Date: {{singleBlog.createdAt}} </h4>
+            <h3>Be Alert Now:</h3>     
+            <p> {{singleBlog.blog}}
+            </p>
     </div>
     
     <button id="return-to-archive" ng-click="return()">Finished</button>            
